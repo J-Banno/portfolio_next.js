@@ -1,0 +1,55 @@
+@import "variables";
+
+.education-section {
+  padding: 5rem 5vw;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  .neon-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: $text-main;
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+  }
+}
+
+.education-content {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.education-item {
+  position: relative;
+  text-align: left;
+  padding-bottom: 1rem;
+
+  h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: $text-main;
+  }
+
+  .date {
+    font-size: 1rem;
+    color: $text-secondary;
+    font-style: italic;
+  }
+
+  .description {
+    font-size: 1rem;
+    color: $text-secondary;
+  }
+
+  .neon-line {
+    height: 2px;
+    background: linear-gradient(to right, transparent, $accent, transparent);
+    width: 0%;
+    margin: 0.5rem 0;
+    opacity: 0;
+  }
+}

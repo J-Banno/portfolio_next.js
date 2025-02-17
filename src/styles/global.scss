@@ -1,0 +1,34 @@
+@import "variables";
+@import "buttons";
+@import "typography";
+@import "layout";
+@import "experience";
+@import "projects";
+@import "skills";
+@import "hero";
+@import "education";
+@import "footer";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: $primary-bg;
+  color: $text-main;
+  font-family: $font-main;
+  padding-top: 80px;
+}
+
+a {
+  color: $accent;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    color: $text-main;
+  }
+}

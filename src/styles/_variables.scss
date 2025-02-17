@@ -1,0 +1,21 @@
+$primary-bg: #0f0f0f;
+$secondary-bg: #1a1a1a;
+$text-main: #f4f4f4;
+$text-secondary: #d1d1d1;
+$border-color: #333;
+$accent: #d1b57c;
+$highlight: #f1e0c6;
+
+$font-main: "Inter", sans-serif;
+
+@mixin mobile {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}

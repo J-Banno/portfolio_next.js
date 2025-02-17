@@ -1,0 +1,54 @@
+.experience-section {
+  padding: 4rem 5vw;
+  background: #121212;
+  color: #eaeaea;
+  text-align: center;
+
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 3rem;
+  }
+
+  .experience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .experience-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+    text-align: left;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 30px $accent;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .date {
+      font-size: 1rem;
+      color: #a8a8a8;
+    }
+
+    p {
+      font-size: 1rem;
+      margin-top: 0.5rem;
+      line-height: 1.4;
+    }
+  }
+}
