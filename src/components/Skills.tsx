@@ -4,7 +4,7 @@ import { useState, useCallback, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import "@/styles/global.scss";
-import { skills, categories } from "@/lib/skills"; // ✅ Correct !
+import { skills, categories } from "@/lib/skills";
 
 export default function SkillsCloud() {
   const [selectedCategory, setSelectedCategory] = useState("Tous");
@@ -15,7 +15,6 @@ export default function SkillsCloud() {
 
   const skillRefs = useRef<(HTMLSpanElement | null)[]>([]);
 
-  // ✅ Refactorisation avec useCallback pour éviter la recréation de la fonction à chaque render
   const assignRef = useCallback((el: HTMLSpanElement | null) => {
     if (el && !skillRefs.current.includes(el)) {
       skillRefs.current.push(el);
@@ -30,7 +29,7 @@ export default function SkillsCloud() {
     const amplitudeY = isMobile ? 15 : 30;
 
     skillRefs.current.forEach((el) => {
-      if (!el || gsap.isTweening(el)) return; // ✅ Évite d’animer un élément déjà en mouvement
+      if (!el || gsap.isTweening(el)) return;
 
       gsap.to(el, {
         x: `+=${Math.random() * amplitudeX - amplitudeX / 2}`,
@@ -73,7 +72,7 @@ export default function SkillsCloud() {
             ref={assignRef}
             initial={{ opacity: 0, scale: 0.85, y: 10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.05 }} // ✅ Stagger effect
+            transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.05 }}
             whileHover={{
               scale: 1.15,
               boxShadow: "0px 6px 20px rgba(209, 181, 124, 0.6)",
