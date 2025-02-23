@@ -25,7 +25,6 @@ export default function Footer() {
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
     >
-      <p className="footer-text">Merci de votre visite 🚀</p>
       <div className="footer-links">
         {socialLinks.map((link) => (
           <motion.a
