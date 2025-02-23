@@ -10,7 +10,7 @@ const projects = [
     title: "Bocalflix",
     description: "Plateforme de streaming, en full-stack MEARN.",
     stack: "MongoDB, React Js, NodeJs",
-    image: "/Bocalflix.jpeg",
+    image: "/Bocalflix.jpg",
     github: "https://github.com/J-Banno/Bocalflix_Back",
   },
   {
