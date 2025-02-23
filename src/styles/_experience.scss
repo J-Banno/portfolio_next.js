@@ -164,6 +164,7 @@
 @include mobile {
   .exp-timeline {
     padding-left: 0;
+    margin-left: 0;
   }
 
   .exp-timeline::before {
@@ -187,6 +188,7 @@
   .exp-timeline-content {
     max-width: 100%;
     margin-left: 0;
+    padding: 1.5rem;
   }
 
   .exp-title-text {
