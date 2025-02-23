@@ -1,7 +1,7 @@
 @import "variables";
 
 .exp-section {
-  padding: 5rem 5vw;
+  padding: 3rem 5vw;
   text-align: center;
   background: $primary-bg;
   display: flex;
@@ -14,9 +14,9 @@
     font-weight: bold;
     color: $text-main;
     text-transform: uppercase;
-    margin-bottom: 3rem;
     font-family: $font-main;
     position: relative;
+    margin: 0;
 
     &::after {
       content: "";
