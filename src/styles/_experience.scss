@@ -1,154 +1,215 @@
-.timeline-section {
-  padding: 4rem 5vw;
-  background: $primary-bg;
-  color: $text-main;
-  text-align: center;
+@import "variables";
 
-  .timeline-title {
-    font-size: 3rem;
+.exp-section {
+  padding: 5rem 5vw;
+  text-align: center;
+  background: $primary-bg;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+
+  .exp-title {
+    font-size: 2.5rem;
     font-weight: bold;
-    margin-bottom: 3rem;
     color: $text-main;
-    text-align: center;
     text-transform: uppercase;
+    margin-bottom: 3rem;
+    font-family: $font-main;
+    position: relative;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: $accent;
+      margin: 10px auto;
+      border-radius: 2px;
+      opacity: 0.7;
+    }
   }
 }
 
-.timeline {
+.exp-timeline {
   position: relative;
-  max-width: 900px;
-  margin: auto;
-  padding: 0 2rem;
+  margin-left: 50px;
 
-  .timeline-line {
+  &::before {
+    content: "";
     position: absolute;
-    left: 50%;
     top: 0;
+    left: 0;
     width: 2px;
     height: 100%;
-    background: linear-gradient(180deg, rgba($accent, 0.9), rgba($accent, 0.3));
-    box-shadow: 0 0 10px rgba($accent, 0.6);
+    background: $accent;
     transform: translateX(-50%);
   }
+}
 
-  .timeline-item {
-    display: flex;
-    justify-content: flex-start; // Par défaut à gauche
-    align-items: center;
-    position: relative;
-    width: 100%;
-    margin-bottom: 80px;
+.exp-timeline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  position: relative;
 
-    &:nth-child(odd) {
-      justify-content: flex-end; // Alternance à droite
-      .timeline-content {
-        text-align: left;
-      }
-    }
+  &:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+}
 
-    &:nth-child(even) {
-      justify-content: flex-start; // Alternance à gauche
-      .timeline-content {
-        text-align: right;
-      }
-    }
+.exp-timeline-dot {
+  width: 16px;
+  height: 16px;
+  background: $accent;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(-50%);
+  animation: fadeIn 0.5s ease forwards;
+  box-shadow: 0 0 12px rgba($accent, 0.9);
 
-    .timeline-marker {
-      width: 14px;
-      height: 14px;
-      background: $accent;
-      border-radius: 50%;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      box-shadow: 0 0 8px rgba($accent, 0.8);
-    }
+  &:hover {
+    box-shadow: 0 0 12px rgba($accent, 0.9);
+  }
+}
 
-    .timeline-content {
-      background: $secondary-bg; // Fond opaque
-      padding: 2rem;
-      border-radius: 12px;
-      border: 1px solid $accent; // Bordure dorée
-      max-width: 45%;
-      position: relative;
-      box-shadow: 0 0 20px rgba($accent, 0.2); // Glow subtil
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translate(-50%, -50%);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translate(-50%, -50%);
+  }
+}
 
-      &:hover {
-        box-shadow: 0 0 25px rgba($accent, 0.5); // Effet hover
-        transform: scale(1.05);
-        transition: 0.3s ease-in-out;
-      }
+.exp-timeline-content {
+  background: $secondary-bg;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0px 6px 15px rgba(209, 181, 124, 0.2);
+  transition: transform 0.3s ease-in-out;
+  margin-left: 50px; // Ajoute un espace entre la ligne et le contenu
+  width: auto; // Permet aux expériences de garder leur propre largeur
 
-      .timeline-year {
-        font-weight: bold;
-        color: $accent;
-        font-size: 1.4rem;
-      }
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 6px 15px rgba($accent, 0.15);
+  }
+}
 
-      h3 {
-        font-size: 1.3rem;
-        margin: 10px 0;
-        color: $text-main;
-      }
+.exp-title-text {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: $accent;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
 
-      .description {
-        font-size: 1rem;
-        color: lighten($text-main, 15%);
-        line-height: 1.6;
-      }
+.exp-date {
+  font-size: 1rem;
+  font-style: italic;
+  color: rgba($text-main, 0.7);
+  display: block;
+  border-bottom: 2px solid $accent;
+  padding-bottom: 6px;
+  margin-bottom: 12px;
+}
+
+.exp-missions {
+  margin-bottom: 14px;
+
+  li {
+    list-style: none;
+    font-size: 1rem;
+    margin-bottom: 8px;
+
+    &::before {
+      content: "•";
+      color: $accent;
+      font-weight: bold;
+      margin-right: 8px;
     }
   }
 }
 
-@media (max-width: 768px) {
-  .timeline {
-    .timeline-line {
-      left: 50%;
-      transform: translateX(-50%);
+.exp-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+  justify-content: center;
+
+  .exp-tech {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: $text-secondary;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      background: rgba(209, 181, 124, 0.3);
+      color: $accent;
     }
+  }
+}
 
-    .timeline-item {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 50px;
+/* 📌 Responsive */
+@include mobile {
+  .exp-timeline {
+    padding-left: 0;
+  }
 
-      .timeline-content {
-        width: 85%;
-        max-width: 400px;
-        text-align: center;
-        padding: 1.5rem; // Légère réduction pour éviter un effet trop étendu
-        font-size: 1rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        line-height: 1.6;
-        border-radius: 10px;
+  .exp-timeline::before {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 100%;
+  }
 
-        .timeline-year {
-          font-size: 1.2rem;
-          font-weight: 600;
-          margin-bottom: 5px;
-        }
+  .exp-timeline-dot {
+    display: none;
+  }
 
-        h3 {
-          font-size: 1.6rem;
-          font-weight: 700;
-          margin-bottom: 5px;
-          text-align: center; // 🔥 Corrige le problème d’alignement
-        }
+  .exp-timeline-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+  }
 
-        .description {
-          font-size: 1.1rem;
-          line-height: 1.5;
-          max-width: 90%;
-          text-align: center;
-        }
-      }
-    }
+  .exp-timeline-content {
+    max-width: 100%;
+    margin-left: 0;
+  }
+
+  .exp-title-text {
+    font-size: 1.2rem;
+  }
+
+  .exp-date {
+    font-size: 0.9rem;
+  }
+
+  .exp-missions {
+    font-size: 0.9rem;
+  }
+
+  .exp-stack {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 8px;
+  }
+
+  .exp-tech {
+    padding: 4px 10px;
+    font-size: 0.75rem;
   }
 }

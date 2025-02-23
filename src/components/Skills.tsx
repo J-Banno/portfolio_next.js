@@ -45,9 +45,8 @@ export default function SkillsCloud() {
 
   return (
     <section id="skills" className="skills-section">
-      <h2 className="section-title">Compétences</h2>
+      <h2 className="skills-title">Compétences</h2>
 
-      {/* 🎯 Filtres stylisés */}
       <div className="filter-container">
         {categories.map((category) => (
           <button
@@ -63,7 +62,6 @@ export default function SkillsCloud() {
         ))}
       </div>
 
-      {/* 🌟 Nuage de compétences animé */}
       <div className="skills-cloud">
         {displayedSkills.map((skill, index) => (
           <motion.span

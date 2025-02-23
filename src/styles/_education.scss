@@ -1,55 +1,93 @@
 @import "variables";
 
-.education-section {
+.educ-section {
   padding: 5rem 5vw;
   text-align: center;
   position: relative;
-  overflow: hidden;
+  background: $primary-bg;
 
-  .neon-title {
+  .educ-title {
     font-size: 2.5rem;
     font-weight: bold;
     color: $text-main;
     text-transform: uppercase;
     margin-bottom: 3rem;
+    font-family: $font-main;
+    position: relative;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: $accent;
+      margin: 10px auto;
+      border-radius: 2px;
+      opacity: 0.7;
+    }
   }
 }
 
-.education-content {
+.educ-content {
   max-width: 700px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.8rem;
 }
 
-.education-item {
+.educ-item {
+  background: $secondary-bg;
+  padding: 1.8rem;
+  border-radius: 12px;
+  border: 1px solid $border-color;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
   position: relative;
-  text-align: left;
-  padding-bottom: 1rem;
 
-  h3 {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: $text-main;
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 5px 15px rgba($accent, 0.3);
   }
 
-  .date {
+  .educ-item-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: $text-main;
+    font-family: $font-main;
+    margin-bottom: 8px;
+  }
+
+  .educ-item-date {
     font-size: 1rem;
     color: $text-secondary;
     font-style: italic;
+    margin-bottom: 5px;
   }
 
-  .description {
+  .educ-item-description {
     font-size: 1rem;
     color: $text-secondary;
+    margin-top: 5px;
   }
 
-  .neon-line {
+  .educ-line {
     height: 2px;
     background: linear-gradient(to right, transparent, $accent, transparent);
     width: 0%;
-    margin: 0.5rem 0;
-    opacity: 0;
+    margin-top: 12px;
+    opacity: 0.8;
+  }
+}
+
+/* Responsive */
+@include mobile {
+  .educ-item {
+    padding: 1.4rem;
+  }
+
+  .educ-item-title {
+    font-size: 1.2rem;
   }
 }
