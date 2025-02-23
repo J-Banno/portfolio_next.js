@@ -44,7 +44,7 @@ export default function SkillsCloud() {
   }, [selectedCategory]);
 
   return (
-    <section id="skills" className="skills-section">
+    <section id="compétences" className="skills-section">
       <h2 className="skills-title">Compétences</h2>
 
       <div className="filter-container">

@@ -1,13 +1,18 @@
 "use client";
 import { motion } from "framer-motion";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import "@/styles/global.scss";
 
 const socialLinks = [
-  { name: "GitHub", url: "https://github.com/J-Banno", icon: "🐙" },
+  {
+    name: "GitHub",
+    url: "https://github.com/J-Banno",
+    icon: <FaGithub />,
+  },
   {
     name: "LinkedIn",
-    url: "https://www.linkedin.com/in/jonathan-bannholtzer//",
-    icon: "🔗",
+    url: "https://www.linkedin.com/in/jonathan-bannholtzer/",
+    icon: <FaLinkedin />,
   },
 ];
 

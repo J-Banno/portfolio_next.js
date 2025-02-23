@@ -29,7 +29,7 @@ export default function Hero() {
               download
               className="btn btn-primary"
             >
-              <FaDownload /> Télécharger mon CV
+              <FaDownload /> Mon CV
             </a>
             <a
               href="https://www.linkedin.com/in/jonathan-bannholtzer/"
