@@ -3,9 +3,12 @@ import { motion } from "framer-motion";
 import "@/styles/global.scss";
 
 const socialLinks = [
-  { name: "GitHub", url: "https://github.com/", icon: "🐙" },
-  { name: "LinkedIn", url: "https://linkedin.com/", icon: "🔗" },
-  { name: "Twitter", url: "https://twitter.com/", icon: "🐦" },
+  { name: "GitHub", url: "https://github.com/J-Banno", icon: "🐙" },
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/jonathan-bannholtzer//",
+    icon: "🔗",
+  },
 ];
 
 export default function Footer() {
