@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "../styles/global.scss";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL || "https://jonathanbannholtzer.com";
@@ -60,6 +61,7 @@ export default function RootLayout({
     <html lang="fr">
       <body className="bg-[#121212] text-[#EAEAEA]">
         <Header />
+        <SpeedInsights />
         {children}
         <Footer />
       </body>
