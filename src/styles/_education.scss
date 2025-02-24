@@ -1,4 +1,4 @@
-@import "variables";
+@use "src/styles/variables" as *;
 
 .educ-section {
   padding: 2rem 5vw;

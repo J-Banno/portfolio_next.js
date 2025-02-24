@@ -1,4 +1,4 @@
-@import "variables";
+@use "src/styles/variables" as *;
 
 .btn {
   padding: 0.75rem 1.5rem;

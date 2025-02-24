@@ -1,13 +1,13 @@
-@import "variables";
-@import "buttons";
-@import "typography";
-@import "layout";
-@import "experience";
-@import "projects";
-@import "skills";
-@import "hero";
-@import "education";
-@import "footer";
+@use "variables" as *;
+@use "buttons" as *;
+@use "typography" as *;
+@use "layout" as *;
+@use "experience" as *;
+@use "projects" as *;
+@use "skills" as *;
+@use "hero" as *;
+@use "education" as *;
+@use "footer" as *;
 
 *,
 *::before,

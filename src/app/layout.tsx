@@ -35,6 +35,7 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: "Aperçu du portfolio de Jonathan Bannholtzer",
+        type: "image/png",
       },
     ],
     locale: "fr_FR",

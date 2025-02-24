@@ -1,5 +1,4 @@
-@import "variables"; // Assure-toi d'importer tes variables globales
-
+@use "src/styles/variables" as *;
 .hero-section {
   display: flex;
   align-items: center;
