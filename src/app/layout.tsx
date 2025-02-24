@@ -31,11 +31,11 @@ export const metadata: Metadata = {
     siteName: "Jonathan Bannholtzer - Portfolio",
     images: [
       {
-        url: `${siteUrl}/preview.png`,
+        url: `${siteUrl}/preview.webp`,
         width: 1200,
         height: 630,
         alt: "Aperçu du portfolio de Jonathan Bannholtzer",
-        type: "image/png",
+        type: "image/webp",
       },
     ],
     locale: "fr_FR",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     title: "Jonathan Bannholtzer - Software Developer",
     description:
       "Découvrez mon travail en développement web, mes compétences et mes projets.",
-    images: [`${siteUrl}/preview.png`],
+    images: [`${siteUrl}/preview.webp`],
   },
 };
 

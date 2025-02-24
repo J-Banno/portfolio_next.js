@@ -59,7 +59,7 @@ export default function Hero() {
         transition={{ duration: 1, ease: "easeOut" }}
       >
         <Image
-          src="/profile1.jpeg"
+          src="/profile1.webp"
           alt="Photo de profil de Jonathan Bannholtzer"
           width={200}
           height={200}
