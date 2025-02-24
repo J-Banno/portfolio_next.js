@@ -60,7 +60,7 @@ export default function Hero() {
       >
         <Image
           src="/profile1.jpeg"
-          alt="John Doe"
+          alt="Photo de profil de Jonathan Bannholtzer"
           width={200}
           height={200}
           className="profile-pic"

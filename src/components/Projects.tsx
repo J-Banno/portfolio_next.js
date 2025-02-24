@@ -37,14 +37,16 @@ const Projects = () => {
         {projects.map((project, index) => (
           <SwiperSlide key={index} className="project-card">
             <div className="project-content">
-              <Image
-                src={project.image}
-                alt={project.title}
-                width={400}
-                height={250}
-                className="project-image"
-                priority
-              />
+              <div className="project-image-container">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  width={400}
+                  height={250}
+                  className="project-image"
+                  loading="lazy"
+                />
+              </div>
               <div className="project-info">
                 <h3>{project.title}</h3>
                 <p>{project.description}</p>
