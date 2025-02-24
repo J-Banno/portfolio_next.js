@@ -17,9 +17,30 @@ const nextConfig: NextConfig = {
       },
     ],
     formats: ["image/avif", "image/webp"],
+    loader: "default",
+    domains: ["jonathanbannholtzer.com"],
   },
   sassOptions: {
     includePaths: [path.join(__dirname, "src", "styles")],
+  },
+
+  async headers() {
+    return [
+      {
+        source: "/(.*)",
+        headers: [
+          {
+            key: "Content-Security-Policy",
+            value:
+              "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' https://trusted.com; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self';", // La CSP sur une seule ligne
+          },
+          {
+            key: "Strict-Transport-Security",
+            value: "max-age=31536000; includeSubDomains; preload",
+          },
+        ],
+      },
+    ];
   },
 };
 
