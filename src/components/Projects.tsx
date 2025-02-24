@@ -60,6 +60,7 @@ const Projects = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="github-link"
+                  aria-label="GitHub"
                 >
                   <FiGithub size={24} />
                 </a>

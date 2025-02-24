@@ -28,6 +28,7 @@ export default function Hero() {
               href="/CV-Bannholtzer-Jonathan.pdf"
               download
               className="btn btn-primary"
+              aria-label="cv"
             >
               <FaDownload /> Mon CV
             </a>
@@ -35,6 +36,7 @@ export default function Hero() {
               href="https://www.linkedin.com/in/jonathan-bannholtzer/"
               target="_blank"
               className="btn btn-secondary"
+              aria-label="LinkedIn"
             >
               <FaLinkedin /> LinkedIn
             </a>
@@ -42,6 +44,7 @@ export default function Hero() {
               href="https://github.com/J-Banno"
               target="_blank"
               className="btn btn-secondary"
+              aria-label="GitHub"
             >
               <FaGithub /> GitHub
             </a>
@@ -61,6 +64,7 @@ export default function Hero() {
           width={200}
           height={200}
           className="profile-pic"
+          priority
         />
       </motion.div>
     </section>
