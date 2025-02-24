@@ -6,23 +6,49 @@ import Image from "next/image";
 import "@/styles/global.scss";
 
 export default function Hero() {
+  const animatedText = "| Conception Full-Stack & Performance";
+
   return (
     <section id="hero" className="hero-section">
       <motion.div
         className="hero-content"
         initial={{ opacity: 0, y: -40 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+        transition={{ duration: 1, ease: "easeOut" }}
       >
         <div className="hero-text">
           <h1>Software Developer</h1>
-          <h2>Développeur Full-Stack | React & PHP</h2>
+          <h2>
+            Développeur Web{" "}
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ staggerChildren: 0.06 }}
+              className="animated-text"
+            >
+              {animatedText.split("").map((char, index) => (
+                <motion.span
+                  key={index}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: index * 0.05 }}
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </motion.span>
+          </h2>
           <p>
             Développeur web passionné et expérimenté, j’ai acquis une expertise
-            dans la création d’interfaces modernes et performantes. Toujours à
-            l’écoute des évolutions technologiques, je m’investis pleinement
-            dans la réussite de chaque projet.
+            dans la création d’interfaces modernes et performantes. Mon objectif
+            est de concevoir des solutions efficaces et adaptées aux besoins
+            réels, tout en restant attentif aux évolutions technologiques.
+            Chaque projet est une occasion d’apporter des réponses concrètes, de
+            relever des défis techniques et de produire un travail soigné. Je
+            m’engage pleinement dans la réussite des missions qui me sont
+            confiées.
           </p>
+
           <div className="hero-buttons">
             <a
               href="/CV-Bannholtzer-Jonathan.pdf"
