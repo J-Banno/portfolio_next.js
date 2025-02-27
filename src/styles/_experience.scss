@@ -31,20 +31,26 @@
   }
 }
 
-.exp-timeline {
+.exp-timeline-container {
   position: relative;
-  margin-left: 50px;
+  width: 100%;
+  margin: 0 auto;
+}
 
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 2px;
-    height: 100%;
-    background: $accent;
-    transform: translateX(-50%);
-  }
+.exp-timeline-line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  background: $accent;
+  transform: translateX(-50%);
+}
+
+.exp-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 }
 
 .exp-timeline-item {
@@ -52,6 +58,36 @@
   align-items: flex-start;
   gap: 2rem;
   position: relative;
+  width: 100%;
+
+  &:nth-child(odd) {
+    flex-direction: row-reverse;
+    text-align: left;
+
+    .exp-timeline-content {
+      margin-right: 55%;
+      width: 45%;
+    }
+
+    .exp-timeline-dot {
+      right: 50%;
+      transform: translateX(50%);
+    }
+  }
+
+  &:nth-child(even) {
+    text-align: left;
+
+    .exp-timeline-content {
+      margin-left: 55%;
+      width: 45%;
+    }
+
+    .exp-timeline-dot {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
 
   &:not(:last-child) {
     margin-bottom: 3rem;
@@ -65,9 +101,7 @@
   border-radius: 50%;
   position: absolute;
   top: 0;
-  left: 0;
   transform: translateY(-50%);
-  animation: fadeIn 0.5s ease forwards;
   box-shadow: 0 0 12px rgba($accent, 0.9);
 
   &:hover {
@@ -92,7 +126,6 @@
   padding: 2rem;
   box-shadow: 0px 6px 15px rgba(209, 181, 124, 0.2);
   transition: transform 0.3s ease-in-out;
-  margin-left: 50px;
   width: auto;
 
   &:hover {
@@ -129,7 +162,7 @@
     list-style: none;
     font-size: 1rem;
     margin-bottom: 8px;
-
+    line-height: 1.6;
     &::before {
       content: "•";
       color: $accent;
@@ -185,6 +218,25 @@
     align-items: center;
     text-align: center;
     gap: 1rem;
+
+    &:nth-child(odd) {
+      flex-direction: row-reverse;
+      text-align: start;
+
+      .exp-timeline-content {
+        margin-right: 0;
+        width: 100%;
+      }
+    }
+
+    &:nth-child(even) {
+      text-align: start;
+
+      .exp-timeline-content {
+        margin-left: 0;
+        width: 100%;
+      }
+    }
   }
 
   .exp-timeline-content {
