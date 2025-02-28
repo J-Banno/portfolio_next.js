@@ -1,36 +1,31 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { experiences } from "@/lib/experiences";
 import "@/styles/global.scss";
 
 const ExperienceTimeline = () => {
-  const [isClient, setIsClient] = useState(false);
   const timelineRef = useRef<HTMLElement | null>(null);
-  const controls = useAnimation();
-  const dotsControls = useAnimation();
+  const controlsArray = experiences.map(() => useAnimation());
+  const refsArray = experiences.map(() => useRef<HTMLDivElement | null>(null));
 
   useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  useEffect(() => {
-    if (!isClient) return;
-
     const handleScroll = () => {
-      if (timelineRef.current) {
-        const rect = timelineRef.current.getBoundingClientRect();
-        if (rect.top < window.innerHeight * 0.75) {
-          controls.start("visible");
-          dotsControls.start("visible");
+      refsArray.forEach((ref, index) => {
+        if (ref.current) {
+          const rect = ref.current.getBoundingClientRect();
+          if (rect.top < window.innerHeight * 0.75) {
+            controlsArray[index].start("visible");
+          }
         }
-      }
+      });
     };
 
     window.addEventListener("scroll", handleScroll);
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isClient, controls, dotsControls]);
+  }, [controlsArray, refsArray]);
 
   return (
     <section id="experience" ref={timelineRef} className="exp-section">
@@ -39,20 +34,31 @@ const ExperienceTimeline = () => {
         <motion.div
           className="exp-timeline-line"
           initial={{ height: 0 }}
-          animate={controls}
-          variants={{
-            visible: { height: "100%" },
-          }}
+          animate={{ height: "100%" }}
           transition={{ duration: 1.5, ease: "easeOut" }}
         />
 
         <div className="exp-timeline">
           {experiences.map((exp, index) => (
-            <div key={exp.id} className="exp-timeline-item">
+            <motion.div
+              ref={refsArray[index]}
+              key={exp.id}
+              className="exp-timeline-item"
+              initial={{ opacity: 0, y: 40 }}
+              animate={controlsArray[index]}
+              variants={{
+                visible: { opacity: 1, y: 0 },
+              }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.2,
+                ease: "easeOut",
+              }}
+            >
               <motion.div
                 className="exp-timeline-dot"
                 initial={{ opacity: 0 }}
-                animate={dotsControls}
+                animate={controlsArray[index]}
                 variants={{
                   visible: { opacity: 1 },
                 }}
@@ -63,15 +69,7 @@ const ExperienceTimeline = () => {
                 }}
               />
 
-              <motion.div
-                className="exp-timeline-content"
-                initial={{ opacity: 0, y: 20 }}
-                animate={controls}
-                variants={{
-                  visible: { opacity: 1, y: 0 },
-                }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-              >
+              <div className="exp-timeline-content">
                 <h3 className="exp-title-text">{exp.title}</h3>
                 <span className="exp-date">{exp.date}</span>
 
@@ -88,8 +86,8 @@ const ExperienceTimeline = () => {
                     </span>
                   ))}
                 </div>
-              </motion.div>
-            </div>
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>
