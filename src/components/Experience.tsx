@@ -1,14 +1,15 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { experiences } from "@/lib/experiences";
 import "@/styles/global.scss";
 
 const ExperienceTimeline = () => {
   const [isClient, setIsClient] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
   const timelineRef = useRef<HTMLElement | null>(null);
+  const controls = useAnimation();
+  const dotsControls = useAnimation();
 
   useEffect(() => {
     setIsClient(true);
@@ -20,29 +21,55 @@ const ExperienceTimeline = () => {
     const handleScroll = () => {
       if (timelineRef.current) {
         const rect = timelineRef.current.getBoundingClientRect();
-        setIsVisible(rect.top < window.innerHeight * 0.75);
+        if (rect.top < window.innerHeight * 0.75) {
+          controls.start("visible");
+          dotsControls.start("visible");
+        }
       }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isClient]);
+  }, [isClient, controls, dotsControls]);
 
   return (
     <section id="experience" ref={timelineRef} className="exp-section">
       <h2 className="exp-title">Expériences</h2>
       <div className="exp-timeline-container">
-        <div className="exp-timeline-line"></div>
-        <div
-          className={`exp-timeline ${isClient && isVisible ? "visible" : ""}`}
-        >
+        <motion.div
+          className="exp-timeline-line"
+          initial={{ height: 0 }}
+          animate={controls}
+          variants={{
+            visible: { height: "100%" },
+          }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+        />
+
+        <div className="exp-timeline">
           {experiences.map((exp, index) => (
             <div key={exp.id} className="exp-timeline-item">
-              <div className="exp-timeline-dot"></div>
+              <motion.div
+                className="exp-timeline-dot"
+                initial={{ opacity: 0 }}
+                animate={dotsControls}
+                variants={{
+                  visible: { opacity: 1 },
+                }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.2,
+                  ease: "easeOut",
+                }}
+              />
+
               <motion.div
                 className="exp-timeline-content"
                 initial={{ opacity: 0, y: 20 }}
-                animate={isClient && isVisible ? { opacity: 1, y: 0 } : {}}
+                animate={controls}
+                variants={{
+                  visible: { opacity: 1, y: 0 },
+                }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
               >
                 <h3 className="exp-title-text">{exp.title}</h3>

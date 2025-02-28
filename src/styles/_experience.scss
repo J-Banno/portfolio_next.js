@@ -107,16 +107,8 @@
   &:hover {
     box-shadow: 0 0 12px rgba($accent, 0.9);
   }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.8) translate(-50%, -50%);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translate(-50%, -50%);
+  &.visible {
+    box-shadow: 0 0 12px rgba($accent, 0.9);
   }
 }
 
@@ -197,6 +189,10 @@
 }
 
 @include mobile {
+  .exp-section {
+    padding-bottom: 0;
+  }
+
   .exp-timeline {
     padding-left: 0;
     margin-left: 0;
@@ -207,6 +203,10 @@
     transform: translateX(-50%);
     width: 1px;
     height: 100%;
+  }
+
+  .exp-timeline-line {
+    display: none;
   }
 
   .exp-timeline-dot {
@@ -222,6 +222,7 @@
     &:nth-child(odd) {
       flex-direction: row-reverse;
       text-align: start;
+      margin-bottom: 1rem;
 
       .exp-timeline-content {
         margin-right: 0;
@@ -231,6 +232,7 @@
 
     &:nth-child(even) {
       text-align: start;
+      margin-bottom: 1rem;
 
       .exp-timeline-content {
         margin-left: 0;
@@ -243,32 +245,31 @@
     max-width: 100%;
     margin-left: 0;
     padding: 1.5rem;
-  }
+    .exp-title-text {
+      font-size: 1.2rem;
+    }
 
-  .exp-title-text {
-    font-size: 1.2rem;
-  }
+    .exp-date {
+      font-size: 0.9rem;
+    }
 
-  .exp-date {
-    font-size: 0.9rem;
-  }
+    .exp-missions {
+      font-size: 0.9rem;
+      display: flex;
+      gap: 4px;
+      padding: 0;
+    }
 
-  .exp-missions {
-    font-size: 0.9rem;
-    display: flex;
-    gap: 4px;
-    padding: 0;
-  }
+    .exp-stack {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 8px;
+    }
 
-  .exp-stack {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 8px;
-  }
-
-  .exp-tech {
-    padding: 4px 10px;
-    font-size: 0.75rem;
+    .exp-tech {
+      padding: 4px 10px;
+      font-size: 0.75rem;
+    }
   }
 }
