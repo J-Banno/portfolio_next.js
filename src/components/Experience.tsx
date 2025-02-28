@@ -1,15 +1,23 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, useAnimation, useScroll, useTransform } from "framer-motion";
 import { experiences } from "@/lib/experiences";
 import "@/styles/global.scss";
 
 const ExperienceTimeline = () => {
   const timelineRef = useRef<HTMLElement | null>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const controlsArray = useRef(experiences.map(() => useAnimation())).current;
+  const observedItems = useRef(new Set()).current;
+  const [isMobile, setIsMobile] = useState(false);
 
-  const controlsArray = experiences.map(() => useAnimation());
+  useEffect(() => {
+    const checkScreenSize = () => setIsMobile(window.innerWidth < 768);
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -18,23 +26,33 @@ const ExperienceTimeline = () => {
           const index = itemRefs.current.indexOf(
             entry.target as HTMLDivElement
           );
-          if (entry.isIntersecting && index !== -1) {
+          if (
+            entry.isIntersecting &&
+            index !== -1 &&
+            !observedItems.has(entry.target)
+          ) {
             controlsArray[index].start("visible");
+            observedItems.add(entry.target);
+            observer.unobserve(entry.target);
           }
         });
       },
       { threshold: 0.3 }
     );
 
-    itemRefs.current.forEach((ref, index) => {
-      if (ref && !ref.dataset.observed) {
-        observer.observe(ref);
-        ref.dataset.observed = "true";
-      }
+    itemRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
     });
 
     return () => observer.disconnect();
-  }, [controlsArray]);
+  }, []);
+
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start start", "end end"],
+  });
+
+  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "98%"]);
 
   return (
     <section id="experience" ref={timelineRef} className="exp-section">
@@ -43,29 +61,29 @@ const ExperienceTimeline = () => {
       <div className="exp-timeline-container">
         <motion.div
           className="exp-timeline-line"
-          initial={{ height: 0 }}
-          animate={{ height: "100%" }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
+          style={{
+            height: lineHeight,
+            maxHeight: "98%",
+          }} // Hauteur dynamique basée sur le scroll
+          transition={{ duration: 0.3, ease: "easeOut" }}
         />
 
         <div className="exp-timeline">
           {experiences.map((exp, index) => (
             <motion.div
               ref={(el) => {
-                if (el && !itemRefs.current.includes(el)) {
-                  itemRefs.current[index] = el;
-                }
+                if (el) itemRefs.current[index] = el;
               }}
               key={exp.id}
               className="exp-timeline-item"
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: isMobile ? 20 : 40 }}
               animate={controlsArray[index]}
               variants={{
                 visible: { opacity: 1, y: 0 },
               }}
               transition={{
-                duration: 0.6,
-                delay: index * 0.2,
+                duration: isMobile ? 0.4 : 0.6,
+                delay: index * (isMobile ? 0.1 : 0.2),
                 ease: "easeOut",
               }}
             >
@@ -83,7 +101,18 @@ const ExperienceTimeline = () => {
                 }}
               />
 
-              <div className="exp-timeline-content">
+              <motion.div
+                className="exp-timeline-content"
+                initial={{ opacity: 0, y: isMobile ? 20 : 0 }}
+                animate={controlsArray[index]}
+                variants={{
+                  visible: { opacity: 1, y: 0 },
+                }}
+                transition={{
+                  duration: isMobile ? 0.4 : 0.6,
+                  ease: "easeOut",
+                }}
+              >
                 <h3 className="exp-title-text">{exp.title}</h3>
                 <span className="exp-date">{exp.date}</span>
 
@@ -100,7 +129,7 @@ const ExperienceTimeline = () => {
                     </span>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
           ))}
         </div>
