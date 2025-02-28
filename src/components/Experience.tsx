@@ -7,29 +7,39 @@ import "@/styles/global.scss";
 
 const ExperienceTimeline = () => {
   const timelineRef = useRef<HTMLElement | null>(null);
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+
   const controlsArray = experiences.map(() => useAnimation());
-  const refsArray = experiences.map(() => useRef<HTMLDivElement | null>(null));
 
   useEffect(() => {
-    const handleScroll = () => {
-      refsArray.forEach((ref, index) => {
-        if (ref.current) {
-          const rect = ref.current.getBoundingClientRect();
-          if (rect.top < window.innerHeight * 0.75) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const index = itemRefs.current.indexOf(
+            entry.target as HTMLDivElement
+          );
+          if (entry.isIntersecting && index !== -1) {
             controlsArray[index].start("visible");
           }
-        }
-      });
-    };
+        });
+      },
+      { threshold: 0.3 }
+    );
 
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [controlsArray, refsArray]);
+    itemRefs.current.forEach((ref, index) => {
+      if (ref && !ref.dataset.observed) {
+        observer.observe(ref);
+        ref.dataset.observed = "true";
+      }
+    });
+
+    return () => observer.disconnect();
+  }, [controlsArray]);
 
   return (
     <section id="experience" ref={timelineRef} className="exp-section">
       <h2 className="exp-title">Expériences</h2>
+
       <div className="exp-timeline-container">
         <motion.div
           className="exp-timeline-line"
@@ -41,7 +51,11 @@ const ExperienceTimeline = () => {
         <div className="exp-timeline">
           {experiences.map((exp, index) => (
             <motion.div
-              ref={refsArray[index]}
+              ref={(el) => {
+                if (el && !itemRefs.current.includes(el)) {
+                  itemRefs.current[index] = el;
+                }
+              }}
               key={exp.id}
               className="exp-timeline-item"
               initial={{ opacity: 0, y: 40 }}
@@ -50,7 +64,7 @@ const ExperienceTimeline = () => {
                 visible: { opacity: 1, y: 0 },
               }}
               transition={{
-                duration: 0.5,
+                duration: 0.6,
                 delay: index * 0.2,
                 ease: "easeOut",
               }}
