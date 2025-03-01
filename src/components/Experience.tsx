@@ -37,7 +37,7 @@ const ExperienceTimeline = () => {
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.1 }
     );
 
     itemRefs.current.forEach((ref) => {
@@ -64,7 +64,7 @@ const ExperienceTimeline = () => {
           style={{
             height: lineHeight,
             maxHeight: "98%",
-          }} // Hauteur dynamique basée sur le scroll
+          }}
           transition={{ duration: 0.3, ease: "easeOut" }}
         />
 
@@ -83,7 +83,7 @@ const ExperienceTimeline = () => {
               }}
               transition={{
                 duration: isMobile ? 0.4 : 0.6,
-                delay: index * (isMobile ? 0.1 : 0.2),
+                delay: index * (isMobile ? 0.05 : 0.2),
                 ease: "easeOut",
               }}
             >
@@ -96,7 +96,7 @@ const ExperienceTimeline = () => {
                 }}
                 transition={{
                   duration: 0.5,
-                  delay: index * 0.2,
+                  delay: index * 0.1,
                   ease: "easeOut",
                 }}
               />
