@@ -23,7 +23,7 @@ export default function Header() {
         </Link>
 
         <ul className="nav-links">
-          {["experience", "projects", "compétences", "contact"].map((item) => (
+          {["experiences", "projets", "compétences", "contact"].map((item) => (
             <li key={item}>
               <Link href={`#${item}`} className="nav-link">
                 {item.charAt(0).toUpperCase() + item.slice(1)}

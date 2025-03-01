@@ -55,7 +55,7 @@ const ExperienceTimeline = () => {
   const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "98%"]);
 
   return (
-    <section id="experience" ref={timelineRef} className="exp-section">
+    <section id="experiences" ref={timelineRef} className="exp-section">
       <h2 className="exp-title">Expériences</h2>
 
       <div className="exp-timeline-container">

@@ -13,7 +13,7 @@ import "@/styles/global.scss";
 
 const Projects = () => {
   return (
-    <section className="projects" id="projects">
+    <section className="projects" id="projets">
       <h2 className="projects-title">Mes Projets</h2>
 
       <Swiper
