@@ -48,7 +48,7 @@ export default function Header() {
                 </button>
               </Dialog.Close>
               <ul className="mobile-nav-links">
-                {["experience", "projects", "compétences", "contact"].map(
+                {["experiences", "projets", "compétences", "contact"].map(
                   (item) => (
                     <li key={item}>
                       <Dialog.Close asChild>
