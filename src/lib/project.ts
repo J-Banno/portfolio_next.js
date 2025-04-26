@@ -27,9 +27,8 @@ const projects = [
     description: "Projet de raccourcissement d'URL.",
     stack: "Php, MySql",
     image: "/url.webp",
-    github: "https://github.com/J-Banno/urlShortene",
+    github: "https://github.com/J-Banno/urlShortener",
   },
-
   {
     title: "The R'Guitar Shop",
     description: "Intégration d'une maquette.",
