@@ -7,6 +7,15 @@ const projects = [
     github: "https://github.com/J-Banno/burgerTruckProject",
   },
   {
+    title: "Hook Generator",
+    description:
+      "SaaS IA de génération d'accroches percutantes. Projet fonctionnel avec des axes d'amélioration sur le modèle IA.",
+    stack:
+      "Next.js, React, TypeScript, Tailwind CSS, FastAPI, Python, Hugging Face",
+    image: "/hook-generator.webp",
+    link: "https://hook-generator-red.vercel.app/",
+  },
+  {
     title: "Bocalflix",
     description: "Plateforme de streaming, en full-stack MEARN.",
     stack: "MongoDB, React Js, NodeJs",

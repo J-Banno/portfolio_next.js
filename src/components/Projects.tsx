@@ -57,15 +57,29 @@ const Projects = () => {
                     </span>
                   ))}
                 </div>
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="github-link"
-                  aria-label="GitHub"
-                >
-                  <FiGithub size={24} />
-                </a>
+                <div>
+                  {project.link ? (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="project-link"
+                      aria-label="Voir le projet en ligne"
+                    >
+                      Voir le projet
+                    </a>
+                  ) : (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="github-link"
+                      aria-label="GitHub"
+                    >
+                      <FiGithub size={24} />
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
           </SwiperSlide>

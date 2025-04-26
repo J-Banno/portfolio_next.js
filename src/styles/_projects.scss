@@ -96,6 +96,26 @@
     color: $text-secondary;
     margin-bottom: 0.8rem;
   }
+  .project-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: $text-main;
+    background: rgba(209, 181, 124, 0.2);
+    border: 1px solid $accent;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      background: rgba(209, 181, 124, 0.2);
+      color: $text-main;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(209, 181, 124, 0.3);
+    }
+  }
 }
 
 .swiper-slide {
