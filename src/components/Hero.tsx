@@ -51,7 +51,7 @@ export default function Hero() {
 
           <div className="hero-buttons">
             <a
-              href="/CV-Bannholtzer-Jonathan.pdf"
+              href="/CV_Bannholtzer_Jonathan.pdf"
               download
               className="btn btn-primary"
               aria-label="cv"
