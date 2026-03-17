@@ -6,7 +6,7 @@ import Image from "next/image";
 import "@/styles/global.scss";
 
 export default function Hero() {
-  const animatedText = "| Conception Full-Stack & Performance";
+  const animatedText = "React · Laravel · Symfony";
 
   return (
     <section id="hero" className="hero-section">
@@ -17,9 +17,8 @@ export default function Hero() {
         transition={{ duration: 1, ease: "easeOut" }}
       >
         <div className="hero-text">
-          <h1>Software Developer</h1>
+          <h1>Développeur Fullstack</h1>
           <h2>
-            Développeur Web{" "}
             <motion.span
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

@@ -1,55 +1,42 @@
 const projects = [
   {
-    title: "Burger Truck",
-    description: "Application web type e-commerce.",
-    stack: "MongoDB, React Js, NodeJs, Redux, AWS, Stripe",
-    image: "/burger-truck.webp",
-    github: "https://github.com/J-Banno/burgerTruckProject",
-  },
-  {
     title: "Hook Generator",
     description:
-      "SaaS IA de génération d'accroches percutantes. Projet fonctionnel avec des axes d'amélioration sur le modèle IA.",
-    stack:
-      "Next.js, React, TypeScript, Tailwind CSS, FastAPI, Python, Hugging Face",
+      "SaaS IA de génération d'accroches percutantes — prompt engineering, appel API LLM et interface Next.js TypeScript. Backend Python/FastAPI déployé indépendamment.",
+    stack: "Next.js, React, TypeScript, Tailwind CSS, FastAPI, Python",
     image: "/hook-generator.webp",
     link: "https://hook-generator-red.vercel.app/",
   },
   {
+    title: "Burger Truck",
+    description:
+      "Application e-commerce fullstack : catalogue produits, panier Redux, paiement Stripe et gestion des commandes. Déployé sur AWS, données persistées sur MongoDB.",
+    stack: "React, Node.js, MongoDB, Redux, AWS, Stripe",
+    image: "/burger-truck.webp",
+    github: "https://github.com/J-Banno/burgerTruckProject",
+  },
+  {
     title: "Bocalflix",
-    description: "Plateforme de streaming, en full-stack MEARN.",
-    stack: "MongoDB, React Js, NodeJs",
+    description:
+      "Plateforme de streaming fullstack : authentification utilisateur, catalogue de contenus, lecture vidéo et gestion des favoris. Architecture MERN avec API REST.",
+    stack: "React, Node.js, MongoDB",
     image: "/bocalflix.webp",
     github: "https://github.com/J-Banno/Bocalflix_Back",
   },
   {
-    title: "Raccourcir votre URL",
-    description: "Projet de raccourcissement d'URL.",
-    stack: "Php, MySql",
-    image: "/url.webp",
-    github: "https://github.com/J-Banno/urlShortener",
-  },
-  {
-    title: "The R'Guitar Shop",
-    description: "Intégration d'une maquette.",
-    stack: "HTML, CSS",
-    image: "/guitar-shop.webp",
-    github: "https://github.com/J-Banno/TheRGuitarShop",
-  },
-  {
     title: "Application mobile Météo",
-    description: "Projet application mobile, utilisation d'une API de météo.",
-    stack: "React native, Expo",
+    description:
+      "Application mobile de consultation météo en temps réel : géolocalisation, données sur 7 jours et interface animée via une API météo externe.",
+    stack: "React Native, Expo",
     image: "/weather.webp",
     github: "https://snack.expo.io/@john-banno/06978f",
   },
   {
-    title: "Application mobile de cocktails",
+    title: "Application mobile Cocktails",
     description:
-      "Projet application mobile, utilisation d'une API de cocktails.",
-    stack: "React native, Expo",
+      "Application mobile de recherche et découverte de cocktails : filtres par ingrédients, fiches détaillées et favoris, consommant l'API TheCocktailDB.",
+    stack: "React Native, Expo",
     image: "/Cocktails.webp",
-    github: "https://github.com/fake/streaming-app",
   },
 ];
 
